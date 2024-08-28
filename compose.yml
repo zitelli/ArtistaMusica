@@ -1,0 +1,37 @@
+####### ORACLE 23 FREE DATABASE ########
+version: '3.8'
+services:
+  oracle:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: artistaMusica
+    environment:
+      - ORACLE_SID=FREE
+      - ORACLE_PWD=Test123
+    ports:
+      - 1521:1521
+    volumes:
+      - data:/opt/oracle/oradata
+
+volumes:
+  data:
+
+# Configuration of Oracle SQL Developer:
+#  SYS        -> sysdba           
+#  Test123
+#  localhost
+#  1521
+#  SID: FREE
+#  Usuario comum: C##ALURA
+#  senha usuario: Test123
+
+#  GRANT CREATE SESSION TO C##ALURA;
+#  SELECT * FROM DBA_SYS_PRIVS WHERE GRANTEE = 'C##ALURA';
+#  ALTER USER C##ALURA DEFAULT ROLE ALL;
+
+#  -- Grant CREATE TABLE privilege
+#  GRANT CREATE TABLE TO C##ALURA;
+#  -- Optionally grant other privileges as needed
+#  GRANT CREATE SEQUENCE TO C##ALURA;  -- If sequences are needed
+#  GRANT CREATE VIEW TO C##ALURA;      -- If views are needed
+#  GRANT CREATE PROCEDURE TO C##ALURA;  -- If stored procedures are needed
+#  GRANT UNLIMITED TABLESPACE TO C##ALURA; -- If the user needs unlimited tablespace
